@@ -1,27 +1,18 @@
 鼠标和键盘移动记录：
-
 Move(x=752, y=231)
-
 Click(x=752, y=231, button=Button.left, pressed=True)
 Click(x=752, y=231, button=Button.left, pressed=False)
-
 Scroll(x=752, y=231, dx=0, dy=1)
 Scroll(x=752, y=231, dx=0, dy=-1)
-
 Click(x=752, y=231, button=Button.middle, pressed=True)
 Click(x=752, y=231, button=Button.middle, pressed=False)
-
 Click(x=753, y=231, button=Button.right, pressed=True)
 Click(x=753, y=231, button=Button.right, pressed=False)
-
 Press(key='q')
 Release(key='q')
-
 Press(key='w')
 Release(key='w')
-
 Press(key='1')
 Release(key='1')
-
 Press(key=Key.esc)
 Bye
