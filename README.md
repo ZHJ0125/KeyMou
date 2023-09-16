@@ -9,6 +9,7 @@
     - [x] 支持字母和数字输入
     - [x] 支持部分 Ctrl 和 Shift [组合键输入](1_Code/Header.py)
     - [x] 支持部分特殊字符输入
+    - [x] 控制台告警提示信息
 - [ ] 文字识别
 - [ ] 任务进度提示
 
@@ -63,4 +64,8 @@ KeyMou
 
 ### 目前已知 Bug
 
-* 无法处理的按键包括 `,`、`=`、`'`，问题定位 `decode_operate()`
+* 无法处理的按键包括 `,`、`=`、`'`，问题定位在 `decode_operate()`
+
+### 依赖项目
+
+* pynput ( LGPL-3.0 license ) - Sends virtual input commands [[Github](https://github.com/moses-palmer/pynput)]
