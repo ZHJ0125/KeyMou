@@ -17,30 +17,9 @@
 # Press(key=Key.esc)
 # Bye
 
-PRINT_LOG_PATH = "../2_Log/print_log_20230915_200110.txt"
+import Header
 
-class MoveStruct():
-    def __init__(self):
-        self.x = 0
-        self.y = 0
-class ClickStruct():
-    def __init__(self) -> None:
-        self.x = 0
-        self.y = 0
-        self.button = ""
-        self.pressed = ""
-class ScrollStruct():
-    def __init__(self) -> None:
-        self.x  = 0
-        self.y  = 0
-        self.dx = 0
-        self.dy = 0
-class PressStruct():
-    def __init__(self) -> None:
-        self.key = ""
-class ReleaseStruct():
-    def __init__(self) -> None:
-        self.key = ""
+PRINT_LOG_PATH = "../2_Log/print_log_20230915_200110.txt"
 
 # ----------------------------------------------------------
 def main():
@@ -56,6 +35,21 @@ def main():
         print("EventType=" + EventType + " Operate=" + Operate)
         if(EventType != "BadString"):
             decode_operate(EventType, Operate)
+            if(EventType == "Move"):
+                # pass
+                print(Header.MoveOperate.x, Header.MoveOperate.y)
+            elif(EventType == "Click"):
+                # pass
+                print(Header.ClickOperate.x, Header.ClickOperate.y, Header.ClickOperate.button, Header.ClickOperate.pressed)
+            elif(EventType == "Scroll"):
+                # pass
+                print(Header.ScrollOperate.x, Header.ScrollOperate.y, Header.ScrollOperate.dx, Header.ScrollOperate.dy)
+            elif(EventType == "Press"):
+                # pass
+                print(Header.PressOperate.key)
+            elif(EventType == "Release"):
+                # pass
+                print(Header.ReleaseOperate.key)
 
     fileHandler.close()
 # ----------------------------------------------------------
@@ -71,38 +65,33 @@ def decode_operate(EventTypeStr, OperateStr):
     print(Operate)
 
     if(EventTypeStr == "Move"):
-        MoveOperate = MoveStruct()
-        MoveOperate.x = Operate[1]  # x 坐标
-        MoveOperate.y = Operate[3]  # y 坐标
-        print(MoveOperate.x, MoveOperate.y)
+        Header.MoveOperate.x = Operate[1]  # x 坐标
+        Header.MoveOperate.y = Operate[3]  # y 坐标
+        # print(MoveOperate.x, MoveOperate.y)
 
     elif(EventTypeStr == "Click"):
-        ClickOperate = ClickStruct()
-        ClickOperate.x = Operate[1]
-        ClickOperate.y = Operate[3]
-        ClickOperate.button = Operate[5]
-        ClickOperate.pressed = Operate[7]
-        print(ClickOperate.x, ClickOperate.y, ClickOperate.button, ClickOperate.pressed)
-    
+        Header.ClickOperate.x = Operate[1]
+        Header.ClickOperate.y = Operate[3]
+        Header.ClickOperate.button = Operate[5]
+        Header.ClickOperate.pressed = Operate[7]
+        # print(ClickOperate.x, ClickOperate.y, ClickOperate.button, ClickOperate.pressed)
+
     elif(EventTypeStr == "Scroll"):
-        ScrollOperate = ScrollStruct()
-        ScrollOperate.x = Operate[1]
-        ScrollOperate.y = Operate[3]
-        ScrollOperate.dx = Operate[5]
-        ScrollOperate.dy = Operate[7]
-        print(ScrollOperate.x, ScrollOperate.y, ScrollOperate.dx, ScrollOperate.dy)
+        Header.ScrollOperate.x = Operate[1]
+        Header.ScrollOperate.y = Operate[3]
+        Header.ScrollOperate.dx = Operate[5]
+        Header.ScrollOperate.dy = Operate[7]
+        # print(ScrollOperate.x, ScrollOperate.y, ScrollOperate.dx, ScrollOperate.dy)
 
     elif(EventTypeStr == "Press"):
-        PressOperate = PressStruct()
-        PressOperate.key = Operate[1]
-        print(PressOperate.key)
+        Header.PressOperate.key = Operate[1]
+        # print(PressOperate.key)
 
     elif(EventTypeStr == "Release"):
-        ReleaseOperate = ReleaseStruct()
-        ReleaseOperate.key = Operate[1]
-        print(ReleaseOperate.key)
+        Header.ReleaseOperate.key = Operate[1]
+        # print(ReleaseOperate.key)
+# ----------------------------------------------------------
     
-
 
 # 处理字符串，返回值：
 #   1. 事件类型："Move", "Click", "Scroll", "Press", "Release", "BadString"
@@ -123,7 +112,7 @@ def decode_type(encoder_text):
         return(Event, str)
     else:
         return("BadString","NULL")
-      
+# ----------------------------------------------------------
 
 if __name__ == "__main__":
     # decode_type("Click(x=752, y=231, button=Button.left, pressed=True)")

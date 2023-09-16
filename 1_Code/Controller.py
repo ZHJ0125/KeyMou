@@ -79,6 +79,23 @@ def mouse_test():
     ctr.release(pynput.mouse.Button.left)
     time.sleep(2)
 
+    # --------------- 滚轮测试 -------------------
+    # Scroll(x=778, y=335, dx=0, dy=1)
+    # # ..... 50 times ......
+    # Scroll(x=778, y=335, dx=0, dy=1)
+    # Scroll(x=778, y=335, dx=0, dy=-1)
+    # ..... 50 times ......
+    # Scroll(x=778, y=335, dx=0, dy=-1)
+    ctr.position = (778, 335)               # 移动到对应位置
+    time.sleep(0.2)
+    for i in range(50):
+        ctr.scroll(0, 1)                    # 向上滚动50单位
+        time.sleep(0.2)
+    for i in range(50):
+        ctr.scroll(0, -1)                   # 向下滚动50单位
+        time.sleep(0.2)
+    
+
 def keyboard_test():
 
     ctr = pynput.keyboard.Controller()

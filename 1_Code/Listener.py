@@ -32,6 +32,7 @@ class MyListener():
 def main():
 
     print("开始运行，日志文件将保存到: " + PRINT_LOG_PATH)
+    print("按下 ESC 键并晃动鼠标停止监听...")
     # 标准输出改成输出到文件
     source_stdout = sys.stdout
     print_log = open(PRINT_LOG_PATH, "w+")
