@@ -1,21 +1,4 @@
-# 鼠标和键盘移动记录：
-# Move(x=752, y=231)
-# Click(x=752, y=231, button=Button.left, pressed=True)
-# Click(x=752, y=231, button=Button.left, pressed=False)
-# Scroll(x=752, y=231, dx=0, dy=1)
-# Scroll(x=752, y=231, dx=0, dy=-1)
-# Click(x=752, y=231, button=Button.middle, pressed=True)
-# Click(x=752, y=231, button=Button.middle, pressed=False)
-# Click(x=753, y=231, button=Button.right, pressed=True)
-# Click(x=753, y=231, button=Button.right, pressed=False)
-# Press(key='q')
-# Release(key='q')
-# Press(key='w')
-# Release(key='w')
-# Press(key='1')
-# Release(key='1')
-# Press(key=Key.esc)
-# Bye
+# 本文件负责解析由 Listener.py 录制的监听日志文件
 
 import Header
 
@@ -58,8 +41,8 @@ def main():
 # 处理操作符字符串，获取有效信息
 def decode_operate(EventTypeStr, OperateStr):
     # 将字符串中无效字符去除
-    removeStr  = "=,"
-    replaceStr = "  "
+    removeStr  = "=,'"
+    replaceStr = "   "
     table=str.maketrans(removeStr, replaceStr)
     Operate = OperateStr.translate(table).split()
     print(Operate)
@@ -67,29 +50,29 @@ def decode_operate(EventTypeStr, OperateStr):
     if(EventTypeStr == "Move"):
         Header.MoveOperate.x = Operate[1]  # x 坐标
         Header.MoveOperate.y = Operate[3]  # y 坐标
-        # print(MoveOperate.x, MoveOperate.y)
+        # print(Header.MoveOperate.x, Header.MoveOperate.y)
 
     elif(EventTypeStr == "Click"):
         Header.ClickOperate.x = Operate[1]
         Header.ClickOperate.y = Operate[3]
         Header.ClickOperate.button = Operate[5]
         Header.ClickOperate.pressed = Operate[7]
-        # print(ClickOperate.x, ClickOperate.y, ClickOperate.button, ClickOperate.pressed)
+        # print(Header.ClickOperate.x, Header.ClickOperate.y, Header.ClickOperate.button, Header.ClickOperate.pressed)
 
     elif(EventTypeStr == "Scroll"):
         Header.ScrollOperate.x = Operate[1]
         Header.ScrollOperate.y = Operate[3]
         Header.ScrollOperate.dx = Operate[5]
         Header.ScrollOperate.dy = Operate[7]
-        # print(ScrollOperate.x, ScrollOperate.y, ScrollOperate.dx, ScrollOperate.dy)
+        # print(Header.ScrollOperate.x, Header.ScrollOperate.y, Header.ScrollOperate.dx, Header.ScrollOperate.dy)
 
     elif(EventTypeStr == "Press"):
         Header.PressOperate.key = Operate[1]
-        # print(PressOperate.key)
+        # print(Header.PressOperate.key)
 
     elif(EventTypeStr == "Release"):
         Header.ReleaseOperate.key = Operate[1]
-        # print(ReleaseOperate.key)
+        # print(Header.ReleaseOperate.key)
 # ----------------------------------------------------------
     
 

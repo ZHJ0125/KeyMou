@@ -1,6 +1,11 @@
 import pynput
 import time
 
+###########################################
+#####   此文件仅用来测试，不影响任何功能   #####
+#####    ONLY FOR TESTING, USELESS    #####
+###########################################
+
 def test():
 
     ctr = pynput.mouse.Controller()
@@ -137,6 +142,14 @@ def keyboard_test():
     
     ctr.press(pynput.keyboard.Key.enter)
     ctr.release(pynput.keyboard.Key.enter)
+
+
+    # ------ 特殊字符测试 ctrl_a ----------
+    ctr.press("\x01")
+    time.sleep(1.5)
+    ctr.release("\x01")
+    time.sleep(1.5)
+
 
 def main():
     pass

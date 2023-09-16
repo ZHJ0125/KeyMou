@@ -2,11 +2,15 @@
 
 ### 功能列表
 
-- [x] 鼠标键盘操作监听
+- [x] 鼠标和键盘操作监听
 - [x] 鼠标 左右中键单击 / 左键双击 / 拖拽 的回放
 - [x] 鼠标滚轮上下滚动回放
-- [ ] 键盘操作回放
+- [x] 键盘操作回放
+    - [x] 支持字母和数字输入
+    - [x] 支持部分 Ctrl 和 Shift [组合键输入](1_Code/Header.py)
+    - [x] 支持部分特殊字符输入
 - [ ] 文字识别
+- [ ] 任务进度提示
 
 ### 使用方法
 
@@ -40,3 +44,23 @@ PS C:\Users\ZHJ\Desktop\KeyMou\1_Code> python .\Listener.py
 ```
 PS C:\Users\ZHJ\Desktop\KeyMou\1_Code> python .\Executer.py
 ```
+
+### 工程结构
+
+**Listener.py `--监听/生成操作日志--→` Decoder.py `--解析日志内容--→` Executer.py `--执行日志操作--→` 回放操作日志**
+
+```
+KeyMou
+├─ 1_Code
+│  ├─ Controller.py --→ 仅测试用
+│  ├─ DataStruct.py --→ 键盘鼠标操作结构体
+│  ├─ Decoder.py    --→ 译码器用于解析操作命令
+│  ├─ Executer.py   --→ 执行器用于执行操作命令
+│  ├─ Header.py     --→ 存放一些公共文件
+│  └─ Listener.py   --→ 监听器用于获取键鼠操作
+└─ 2_Log            --→ 存放操作日志文件
+```
+
+### 目前已知 Bug
+
+* 无法处理的按键包括 `,`、`=`、`'`，问题定位 `decode_operate()`

@@ -1,5 +1,7 @@
+# 操作类型结构体，记录相关操作命令
+
 class MoveStruct():
-    def __init__(self):
+    def __init__(self) -> None:
         self.x = 0
         self.y = 0
 class ClickStruct():
