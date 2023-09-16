@@ -2,7 +2,7 @@ import pynput
 from threading import Thread
 import sys, time
 
-PRINT_LOG_PATH = "print_log_" + time.strftime("%Y%m%d_%H%M%S") + ".txt"
+PRINT_LOG_PATH = "../2_Log/print_log_" + time.strftime("%Y%m%d_%H%M%S") + ".txt"
 run_threads_flag = True  # 线程允许运行标志
 
 class MyListener():
@@ -59,6 +59,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # print(PRINT_LOG_PATH)
-    # print(str(PRINT_LOG_PATH))
-    # print("print_log.txt")
