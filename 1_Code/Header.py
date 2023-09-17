@@ -1,5 +1,11 @@
 import DataStruct
 
+# 控制台输出信息：
+# \033[35m[Debug]\033[0m    用于跟踪程序运行状态
+# \033[34m[Info]\033[0m     用于打印程序应该出现的正常状态信息，便于追踪定位；
+# \033[33m[Warn]\033[0m     表明系统出现轻微的不合理但不影响运行和使用；
+# \033[31m[Error]\033[0m    表明出现了系统错误和异常，无法正常完成目标操作；
+
 MoveOperate = DataStruct.MoveStruct()
 ClickOperate = DataStruct.ClickStruct()
 ScrollOperate = DataStruct.ScrollStruct()
@@ -70,4 +76,11 @@ keyboard_map = {
     "}"     : ']',      # shift + ]
     "|"     : '\\',     # shift + \
     "?"     : '/',      # shift + /
+}
+
+ocr_valid_range = {
+    "CDTU_Toolkit_Login_Status"     :   (1170, 713, 1207, 726),
+    "CDTU_Toolkit_NetConnect_Status":   (892 , 713, 906 , 726),
+    "CDTU_Toolkit_Upload_Status"    :   (0   ,   0,    0,   0),
+    "CDTU_Toolkit_Download_Status"  :   (0   ,   0,    0,   0), # 待完善
 }
